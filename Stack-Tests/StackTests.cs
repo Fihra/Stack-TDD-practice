@@ -30,5 +30,22 @@ namespace Stack_Tests
             Assert.AreEqual(3, value);
             Assert.AreEqual(2, s.Count);
         }
+
+        [Test]
+        public void Too_Much_Pop()
+        {
+            Stack<int> s = new Stack<int>(3);
+            Assert.Throws<ExpenditureProhibitedException>(() => s.Pop());
+        }
+
+        [Test]
+        public void Too_Much_Push()
+        {
+            Stack<int> s = new Stack<int>(3);
+            s.Push(1);
+            s.Push(2);
+            s.Push(3);
+            Assert.Throws<ExceededSizeException>(() => s.Push(4));
+        }
     }
 }
